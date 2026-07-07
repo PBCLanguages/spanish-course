@@ -135,11 +135,37 @@ img{max-width:100%;display:block}
 .feature-block{margin-top:30px}
 .feature-block > h2{font-size:20px;margin-bottom:2px}
 .feature-block > .sub{color:var(--muted);font-weight:700;font-size:13.5px;margin-bottom:14px}
-.vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
 .vid-grid .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
 .vid-grid .card .cap{padding:11px 14px}
 .vid-grid .card .cap b{display:block;font-family:'Poppins';font-size:14.5px}
 .vid-grid .card .cap span{font-size:12.5px;color:var(--muted);font-weight:700}
+/* featured video testimonial (portrait phone videos) */
+.tfeature{display:flex;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:16px}
+.tfeature .tvideo{flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:12px;background:#0c1622;display:block}
+.tfeature .tq{min-width:0}
+.tfeature .tq .qq{font-family:'Poppins';font-size:21px;font-weight:700;color:var(--ink);margin:0 0 8px;line-height:1.3}
+.tfeature .tq .who{color:var(--muted);font-weight:700;font-size:14px;margin:0}
+.tfeature .tq .flag{font-size:15px}
+@media(max-width:560px){.tfeature{flex-direction:column;text-align:center}.tfeature .tvideo{width:190px;max-width:70%;margin:0 auto}}
+
+/* ---------- Promo / CTA band (soft PBC Español) ---------- */
+.promo{margin:26px 0 4px}
+.promo-card{
+  background:linear-gradient(135deg,var(--blue),var(--turq));border-radius:var(--radius);
+  padding:20px 24px;color:#fff;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;box-shadow:var(--shadow);
+}
+.promo-card .ptxt b{font-family:'Poppins';font-size:19px;display:block;line-height:1.2}
+.promo-card .ptxt span{font-size:14px;opacity:.93;font-weight:600}
+.promo-btns{display:flex;gap:10px;flex-wrap:wrap}
+.pbtn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;
+  font-size:14.5px;padding:12px 18px;border-radius:40px;transition:transform .12s;white-space:nowrap}
+.pbtn:hover{transform:translateY(-2px)}
+.pbtn-yellow{background:var(--yellow);color:#5a4a00;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.pbtn-line{background:rgba(255,255,255,.16);color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+.pbtn-line:hover{background:rgba(255,255,255,.26)}
+@media(max-width:560px){.promo-card{flex-direction:column;align-items:stretch;text-align:center}.promo-btns{justify-content:center}}
 
 /* ---------- Modules & lessons ---------- */
 .module{margin-top:46px;scroll-margin-top:80px}
@@ -313,10 +339,35 @@ footer a{font-weight:800}
         <p><b>How to use this page.</b> Follow the course from top to bottom, or jump to any lesson using the <b>index</b> on the left (tap <b>☰ Index</b> on mobile). Click any video to play it right here, no need to leave the page. Mark lessons as <b>Done ✓</b> to track your progress.</p>
       </div>
 
+      <!-- ===== Soft promo band: PBC Español ===== -->
+      <section class="promo">
+        <div class="promo-card">
+          <div class="ptxt">
+            <b>Ready for the real thing? 🎓</b>
+            <span>Enjoyed the videos? Learn live with a native teacher at PBC.</span>
+          </div>
+          <div class="promo-btns">
+            <a class="pbtn pbtn-yellow" href="https://pbclanguages.com/schedule/?language=es" target="_blank" rel="noopener">🎁 Your first class is FREE</a>
+            <a class="pbtn pbtn-line" href="https://pbclanguages.com/tandems/" target="_blank" rel="noopener">🌍 Free language exchanges</a>
+          </div>
+        </div>
+      </section>
+
       <!-- ===== Testimonials ===== -->
       <section class="feature-block">
         <h2>What students say 💬</h2>
-        <div class="sub">Real testimonials from people who took the course</div>
+        <div class="sub">Real students, real words</div>
+
+        <div class="tfeature">
+          <video class="tvideo" controls preload="metadata" playsinline>
+            <source src="media/michael.mp4" type="video/mp4">
+          </video>
+          <div class="tq">
+            <p class="qq">“More than learning Spanish. It's a real community.”</p>
+            <p class="who"><span class="flag">🇺🇸</span> Michael · PBC Spanish student</p>
+          </div>
+        </div>
+
         <div class="vid-grid">
           <div class="card">
             <div class="video" data-yt="tfC6Rdqx060"></div>
@@ -1184,6 +1235,20 @@ footer a{font-weight:800}
             </div>
           </div>
         </article>
+      </section>
+
+      <!-- ===== Soft promo band (bottom) ===== -->
+      <section class="promo" style="margin-top:40px">
+        <div class="promo-card">
+          <div class="ptxt">
+            <b>¡Bien hecho! You finished the course 🎉</b>
+            <span>Now practise for real: a free class or a language exchange with PBC.</span>
+          </div>
+          <div class="promo-btns">
+            <a class="pbtn pbtn-yellow" href="https://pbclanguages.com/schedule/?language=es" target="_blank" rel="noopener">🎁 Book your FREE class</a>
+            <a class="pbtn pbtn-line" href="https://pbclanguages.com/tandems/" target="_blank" rel="noopener">🌍 Join a tandem</a>
+          </div>
+        </div>
       </section>
 
       <footer>
