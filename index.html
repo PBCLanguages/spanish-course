@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanish Course · PBC Languages</title>
+<meta name="description" content="Learn Spanish from scratch with PBC Languages. Pronunciation, vocabulary, grammar and verb tenses — all videos and notes in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1666D6;
+  --blue-dark:#0e4aa0;
+  --turq:#02A9CA;
+  --yellow:#FFD400;
+  --ink:#1d2733;
+  --muted:#647082;
+  --line:#e7ecf3;
+  --bg:#f5f8fc;
+  --card:#ffffff;
+  --green:#58cc02;
+  --radius:18px;
+  --shadow:0 4px 18px rgba(20,50,90,.08);
+  --shadow-lg:0 12px 40px rgba(20,50,90,.16);
+  --sidebar:320px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Nunito',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Poppins','Nunito',sans-serif;line-height:1.2;margin:0}
+a{color:var(--blue)}
+img{max-width:100%;display:block}
+
+/* ---------- Layout ---------- */
+.layout{display:flex;min-height:100vh}
+.sidebar{
+  width:var(--sidebar);
+  flex:0 0 var(--sidebar);
+  position:sticky;top:0;align-self:flex-start;
+  height:100vh;overflow-y:auto;
+  background:#fff;border-right:1px solid var(--line);
+  padding:22px 16px 60px;
+}
+.main{flex:1;min-width:0}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px 90px}
+
+/* ---------- Sidebar ---------- */
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 16px;text-decoration:none}
+.brand .logo{
+  width:40px;height:40px;border-radius:12px;flex:0 0 40px;
+  background:linear-gradient(135deg,var(--blue),var(--turq));
+  color:#fff;display:grid;place-items:center;font-family:'Poppins';font-weight:800;font-size:20px;
+}
+.brand b{font-family:'Poppins';font-size:17px;color:var(--ink);display:block;line-height:1.1}
+.brand span{font-size:11.5px;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+
+.progress-box{background:var(--bg);border-radius:14px;padding:12px 14px;margin:0 4px 18px}
+.progress-box .pl{display:flex;justify-content:space-between;font-size:12.5px;font-weight:800;color:var(--muted);margin-bottom:7px}
+.progress-box .pl b{color:var(--blue)}
+.bar{height:9px;border-radius:20px;background:#e3e9f2;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;border-radius:20px;background:linear-gradient(90deg,var(--green),#7ed321);transition:width .4s ease}
+
+.toc{list-style:none;margin:0;padding:0}
+.toc .mod-title{
+  font-family:'Poppins';font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--muted);padding:16px 12px 6px;
+}
+.toc a{
+  display:flex;align-items:center;gap:9px;
+  padding:8px 12px;margin:1px 0;border-radius:11px;
+  text-decoration:none;color:var(--ink);font-weight:700;font-size:14px;
+  transition:background .15s,color .15s;
+}
+.toc a:hover{background:var(--bg)}
+.toc a.active{background:#eaf1ff;color:var(--blue)}
+.toc a .dot{
+  width:8px;height:8px;border-radius:50%;flex:0 0 8px;background:#d3dbe6;transition:background .2s;
+}
+.toc a.done .dot{background:var(--green)}
+.toc a .num{font-size:12px;color:var(--muted);font-weight:800;min-width:16px}
+
+/* ---------- Topbar (mobile) ---------- */
+.topbar{
+  display:none;position:sticky;top:0;z-index:40;
+  background:#fff;border-bottom:1px solid var(--line);
+  padding:10px 14px;align-items:center;gap:12px;
+}
+.topbar .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--turq));color:#fff;display:grid;place-items:center;font-family:'Poppins';font-weight:800}
+.topbar b{font-family:'Poppins';font-size:15px}
+.menu-btn{
+  margin-left:auto;background:var(--blue);color:#fff;border:0;border-radius:10px;
+  padding:9px 12px;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito';
+  display:flex;align-items:center;gap:7px;
+}
+.scrim{display:none;position:fixed;inset:0;background:rgba(15,30,55,.45);z-index:45}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:linear-gradient(135deg,var(--blue) 0%,var(--turq) 100%);
+  color:#fff;padding:48px 20px 54px;text-align:center;position:relative;overflow:hidden;
+}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:34px;background:var(--bg);border-radius:50% 50% 0 0/100% 100% 0 0}
+.hero .kicker{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12.5px;opacity:.9}
+.hero h1{font-size:clamp(30px,6vw,46px);margin:8px 0 6px;font-weight:800;letter-spacing:-.02em}
+.hero p.tag{font-size:clamp(15px,2.4vw,18px);opacity:.95;margin:0 auto;max-width:540px;font-weight:600}
+.hero .flag{font-size:34px;margin-bottom:2px}
+.socials{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:22px;position:relative;z-index:2}
+.socials a{
+  background:rgba(255,255,255,.16);color:#fff;text-decoration:none;font-weight:800;font-size:13.5px;
+  padding:9px 15px;border-radius:40px;border:1px solid rgba(255,255,255,.25);
+  display:inline-flex;align-items:center;gap:7px;transition:background .15s;backdrop-filter:blur(4px);
+}
+.socials a:hover{background:rgba(255,255,255,.28)}
+.instructor{margin-top:16px;font-weight:700;font-size:14px;opacity:.95;position:relative;z-index:2}
+.instructor .reviews{background:var(--yellow);color:#5a4a00;border-radius:30px;padding:2px 10px;font-size:12px;font-weight:900;margin-left:6px}
+
+/* ---------- Intro strip ---------- */
+.intro-note{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;margin:26px 0 8px;display:flex;gap:12px;align-items:flex-start;box-shadow:var(--shadow);
+}
+.intro-note .ic{font-size:22px;line-height:1}
+.intro-note p{margin:0;font-size:14.5px;color:var(--muted);font-weight:600}
+.intro-note b{color:var(--ink)}
+
+/* ---------- Testimonials / podcasts row ---------- */
+.feature-block{margin-top:30px}
+.feature-block > h2{font-size:20px;margin-bottom:2px}
+.feature-block > .sub{color:var(--muted);font-weight:700;font-size:13.5px;margin-bottom:14px}
+.vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vid-grid .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.vid-grid .card .cap{padding:11px 14px}
+.vid-grid .card .cap b{display:block;font-family:'Poppins';font-size:14.5px}
+.vid-grid .card .cap span{font-size:12.5px;color:var(--muted);font-weight:700}
+
+/* ---------- Modules & lessons ---------- */
+.module{margin-top:46px;scroll-margin-top:80px}
+.module-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.module-head .badge{
+  width:46px;height:46px;flex:0 0 46px;border-radius:14px;
+  background:var(--yellow);color:#5a4a00;font-family:'Poppins';font-weight:800;font-size:20px;
+  display:grid;place-items:center;box-shadow:var(--shadow);
+}
+.module-head h2{font-size:23px}
+.module-head .es{color:var(--blue)}
+.module-head .en{color:var(--muted);font-weight:700;font-size:13.5px;margin-top:1px;font-family:'Nunito'}
+.module-playlist{
+  display:inline-flex;align-items:center;gap:8px;margin:10px 0 4px;
+  background:#fff;border:1px solid var(--line);border-radius:40px;padding:7px 15px;
+  text-decoration:none;color:var(--ink);font-weight:800;font-size:13px;box-shadow:var(--shadow);
+}
+.module-playlist:hover{border-color:var(--blue)}
+.module-playlist .yt-ic{color:#ff0000;font-size:16px}
+
+.lesson{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin-top:18px;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:78px;
+}
+.lesson-head{display:flex;align-items:flex-start;gap:12px;padding:16px 18px 4px}
+.lesson-head .lnum{
+  font-family:'Poppins';font-weight:800;color:#fff;font-size:13px;
+  background:var(--turq);border-radius:9px;min-width:30px;height:30px;padding:0 7px;
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;
+}
+.lesson-head h3{font-size:18px}
+.lesson-head h3 .en{display:block;font-size:12.5px;color:var(--muted);font-weight:700;font-family:'Nunito';margin-top:1px}
+.done-btn{
+  margin-left:auto;flex:0 0 auto;border:1.5px solid var(--line);background:#fff;color:var(--muted);
+  border-radius:40px;padding:6px 13px;font-weight:800;font-size:12.5px;cursor:pointer;font-family:'Nunito';
+  display:inline-flex;align-items:center;gap:6px;transition:.15s;white-space:nowrap;
+}
+.done-btn:hover{border-color:var(--green);color:var(--green)}
+.lesson.is-done .done-btn{background:var(--green);border-color:var(--green);color:#fff}
+.lesson-body{padding:8px 18px 20px}
+
+/* video facade */
+.video{
+  position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;cursor:pointer;
+  background:#0c1622;margin:10px 0 4px;
+}
+.video img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:.25s}
+.video:hover img{opacity:1;transform:scale(1.02)}
+.video .play{
+  position:absolute;inset:0;margin:auto;width:66px;height:46px;border-radius:12px;
+  background:rgba(255,0,0,.92);display:grid;place-items:center;transition:.2s;box-shadow:0 6px 20px rgba(0,0,0,.35);
+}
+.video:hover .play{background:#ff0000;transform:scale(1.06)}
+.video .play:after{content:"";border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #fff;margin-left:3px}
+.video iframe{width:100%;height:100%;border:0;display:block}
+
+/* content components */
+.note-body h4{font-family:'Poppins';font-size:15px;margin:18px 0 8px;color:var(--blue-dark)}
+.note-body h4:first-child{margin-top:12px}
+.note-body p{margin:8px 0}
+.tip{
+  background:#fffbe6;border:1px solid #ffe9a8;border-left:4px solid var(--yellow);
+  border-radius:10px;padding:10px 14px;margin:12px 0;font-size:14px;font-weight:600;
+}
+.tip b{color:#8a6d00}
+.rule{
+  background:#eaf1ff;border-left:4px solid var(--blue);border-radius:10px;padding:10px 14px;margin:12px 0;font-weight:700;font-size:14.5px;
+}
+.rule .ipa{color:var(--turq);font-weight:800}
+
+/* pill list (sounds, endings) */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pill{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-weight:800;font-size:14px}
+.pill .ph{color:var(--turq);font-weight:800;margin-left:5px;font-size:12.5px}
+
+/* word grid */
+.words{list-style:none;margin:8px 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px 14px}
+.words li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:5px 2px;font-size:14px}
+.words li b{font-weight:800}
+.words li span{color:var(--muted);font-weight:600;text-align:right}
+
+/* conjugation table */
+.conj{border-collapse:collapse;margin:10px 0;width:100%;max-width:420px;font-size:14.5px}
+.conj td{border:1px solid var(--line);padding:7px 12px}
+.conj td:first-child{color:var(--muted);font-weight:700;width:120px;background:var(--bg)}
+.conj td b{color:var(--blue-dark)}
+.conj caption{caption-side:top;text-align:left;font-weight:800;color:var(--turq);padding-bottom:6px;font-size:13px}
+
+/* examples */
+.ex{margin:9px 0;padding-left:14px;border-left:3px solid var(--turq)}
+.ex .es{margin:0;font-weight:800}
+.ex .es b{color:var(--blue)}
+.ex .en{margin:1px 0 0;color:var(--muted);font-weight:600;font-size:13.5px;font-style:italic}
+.qa{margin:9px 0}
+.qa .q{font-weight:800;color:var(--blue)}
+.qa .a{color:var(--ink);font-weight:700}
+
+.back-top{
+  position:fixed;right:20px;bottom:20px;z-index:30;
+  width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--blue);color:#fff;font-size:20px;box-shadow:var(--shadow-lg);
+  opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.back-top.show{opacity:1;pointer-events:auto}
+
+footer{text-align:center;color:var(--muted);font-size:13px;font-weight:600;padding:30px 20px 40px}
+footer a{font-weight:800}
+
+/* ---------- Responsive ---------- */
+@media(max-width:900px){
+  .sidebar{
+    position:fixed;top:0;left:0;z-index:50;height:100vh;width:300px;flex-basis:300px;
+    transform:translateX(-100%);transition:transform .28s ease;box-shadow:var(--shadow-lg);
+  }
+  body.nav-open .sidebar{transform:translateX(0)}
+  body.nav-open .scrim{display:block}
+  .topbar{display:flex}
+  .vid-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .hero{padding:38px 16px 46px}
+  .wrap{padding:0 14px 70px}
+  .lesson-head .done-btn span{display:none}
+  .module-head .badge{width:40px;height:40px;flex-basis:40px;font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#top">
+      <span class="logo">P</span>
+      <span><b>PBC Languages</b><span>Spanish Course</span></span>
+    </a>
+    <div class="progress-box">
+      <div class="pl"><span>Your progress</span><span><b id="pcount">0</b> / <span id="ptotal">0</span></span></div>
+      <div class="bar"><i id="pbar"></i></div>
+    </div>
+    <nav><ul class="toc" id="toc"></ul></nav>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+
+    <div class="topbar">
+      <span class="logo">P</span><b>Spanish Course</b>
+      <button class="menu-btn" id="menuBtn">☰ Index</button>
+    </div>
+
+    <a id="top"></a>
+    <header class="hero">
+      <div class="flag">🇪🇸</div>
+      <div class="kicker">PBC Languages · People Building Connections</div>
+      <h1>Spanish Course</h1>
+      <p class="tag">Learn Spanish from scratch, step by step. Every video and every note, all in one place.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/vivaespanol.es/" target="_blank" rel="noopener">📸 Instagram @vivaespanol.es</a>
+        <a href="http://linkedin.com/in/guillermo-de-yzaguirre/" target="_blank" rel="noopener">💼 LinkedIn</a>
+        <a href="mailto:guillermo.de.yzaguirre@gmail.com">✉️ E-mail</a>
+      </div>
+      <div class="instructor">Your teacher: <b>Guillermo de Yzaguirre</b><span class="reviews">★ +41 reviews</span></div>
+    </header>
+
+    <div class="wrap">
+
+      <div class="intro-note">
+        <span class="ic">👋</span>
+        <p><b>How to use this page.</b> Follow the course from top to bottom, or jump to any lesson using the <b>index</b> on the left (tap <b>☰ Index</b> on mobile). Click any video to play it right here, no need to leave the page. Mark lessons as <b>Done ✓</b> to track your progress.</p>
+      </div>
+
+      <!-- ===== Testimonials ===== -->
+      <section class="feature-block">
+        <h2>What students say 💬</h2>
+        <div class="sub">Real testimonials from people who took the course</div>
+        <div class="vid-grid">
+          <div class="card">
+            <div class="video" data-yt="tfC6Rdqx060"></div>
+            <div class="cap"><b>Tyler &amp; Amy</b><span>Conversational Spanish Course</span></div>
+          </div>
+          <div class="card">
+            <div class="video" data-yt="S-vVw-Pvz6U"></div>
+            <div class="cap"><b>Giorgio</b><span>Business Spanish Course</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Podcasts ===== -->
+      <section class="feature-block">
+        <h2>Listening practice · Podcasts 🎧</h2>
+        <div class="sub">Train your ear with these A2 &amp; B1 podcast episodes</div>
+        <div class="vid-grid">
+          <div class="card">
+            <div class="video" data-yt="aMQ6BqMGL4c"></div>
+            <div class="cap"><b>Spanish Podcast · Level A2</b><span>Episode 1</span></div>
+          </div>
+          <div class="card">
+            <div class="video" data-yt="Mi0l6z3kbXE"></div>
+            <div class="cap"><b>Spanish Podcast · A2 – B1</b><span>Episode 2</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- MODULE 1 -->
+      <!-- ============================================================= -->
+      <section class="module" data-module id="mod-1">
+        <div class="module-head">
+          <span class="badge">1</span>
+          <div>
+            <h2><span class="es">Pronunciación y Alfabeto</span></h2>
+            <div class="en">Pronunciation &amp; the Alphabet</div>
+          </div>
+        </div>
+
+        <!-- 1.1 Vowels -->
+        <article class="lesson" id="l-vowels" data-lesson>
+          <div class="lesson-head"><span class="lnum">1</span><h3>Las Vocales<span class="en">The Vowels</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="qwyjxBxtEgw"></div>
+            <div class="note-body">
+              <p>Spanish has only <b>5 vowel sounds</b> and they never change. Learn these and half your pronunciation is done.</p>
+              <div class="pills">
+                <span class="pill">A<span class="ph">/ah/ · apple</span></span>
+                <span class="pill">E<span class="ph">/eh/ · elephant</span></span>
+                <span class="pill">I<span class="ph">/eeh/ · Indiana</span></span>
+                <span class="pill">O<span class="ph">/oh/ · Ontario</span></span>
+                <span class="pill">U<span class="ph">/ooh/ · 👻</span></span>
+              </div>
+              <h4>Practise each vowel</h4>
+              <ul class="words">
+                <li><b>Tailandia</b><span>Thailand</span></li>
+                <li><b>Alemania</b><span>Germany</span></li>
+                <li><b>América</b><span>America</span></li>
+                <li><b>Amor</b><span>love</span></li>
+                <li><b>Elefante</b><span>elephant</span></li>
+                <li><b>Eléctrico</b><span>electric</span></li>
+                <li><b>Iglesia</b><span>church</span></li>
+                <li><b>Isla</b><span>island</span></li>
+                <li><b>Increíble</b><span>incredible</span></li>
+                <li><b>Tomate</b><span>tomato</span></li>
+                <li><b>Cosa</b><span>thing</span></li>
+                <li><b>Momento</b><span>moment</span></li>
+                <li><b>Humo</b><span>smoke</span></li>
+                <li><b>Cuco</b><span>cute</span></li>
+                <li><b>Culebra</b><span>snake</span></li>
+              </ul>
+              <div class="tip"><b>Say it slowly:</b> Se-má-fo-ro (traffic light). Practise 10 min a day: listen to a word and write it down, then check it on Google Translate.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.2 Alphabet -->
+        <article class="lesson" id="l-alphabet" data-lesson>
+          <div class="lesson-head"><span class="lnum">2</span><h3>El Alfabeto<span class="en">The Alphabet</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="a3ophdHLdUQ"></div>
+            <div class="note-body">
+              <p>The Spanish alphabet. The letters marked with ⭐ are the <b>special ones</b> (they sound different from English) — we cover each one in its own lesson below.</p>
+              <ul class="words">
+                <li><b>A</b><span>a</span></li><li><b>B</b><span>be</span></li>
+                <li><b>C ⭐</b><span>ce</span></li><li><b>D</b><span>de</span></li>
+                <li><b>E</b><span>e</span></li><li><b>F</b><span>efe</span></li>
+                <li><b>G ⭐</b><span>ge</span></li><li><b>H ⭐</b><span>ache</span></li>
+                <li><b>I</b><span>i</span></li><li><b>J ⭐</b><span>jota</span></li>
+                <li><b>K ⭐</b><span>ka</span></li><li><b>L</b><span>ele</span></li>
+                <li><b>LL ⭐</b><span>elle</span></li><li><b>M</b><span>eme</span></li>
+                <li><b>N</b><span>ene</span></li><li><b>Ñ ⭐</b><span>eñe</span></li>
+                <li><b>O</b><span>o</span></li><li><b>P</b><span>pe</span></li>
+                <li><b>Q ⭐</b><span>cu</span></li><li><b>R / RR ⭐</b><span>erre</span></li>
+                <li><b>S</b><span>ese</span></li><li><b>T</b><span>te</span></li>
+                <li><b>U</b><span>u</span></li><li><b>V ⭐</b><span>uve</span></li>
+                <li><b>W ⭐</b><span>uve doble</span></li><li><b>X</b><span>equis</span></li>
+                <li><b>Y ⭐</b><span>i griega</span></li><li><b>Z ⭐</b><span>ceta</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.3 Letter C -->
+        <article class="lesson" id="l-c" data-lesson>
+          <div class="lesson-head"><span class="lnum">3</span><h3>La letra C<span class="en">The letter C</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="-wI-xoF8qEQ"></div>
+            <div class="note-body">
+              <div class="rule">CA · CO · CU sound like <span class="ipa">/k/</span></div>
+              <div class="rule">CE · CI sound like <span class="ipa">/s/</span> (Latin America) or <span class="ipa">/th/</span> (Spain)</div>
+              <p><b>Examples:</b> Casa, Cena, Cielo, Coma, Curso</p>
+              <h4>/k/ sound</h4>
+              <p>Casa, caracol, caminar, laca, tocar · Cosa, comer, colaborar, coco, Colombia · Cuerda, Cuba, cuestión, culebra</p>
+              <h4>/s/ · /th/ sound</h4>
+              <p>Cenar, celos, almacenar · Cielo, cocinar, imbécil, tocino</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.4 Letter G -->
+        <article class="lesson" id="l-g" data-lesson>
+          <div class="lesson-head"><span class="lnum">4</span><h3>La letra G<span class="en">The letter G</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="oxFyVm2eZOM"></div>
+            <div class="note-body">
+              <div class="rule">GA · GO · GU &nbsp;+&nbsp; GUE · GUI sound like <span class="ipa">/g/</span></div>
+              <div class="rule">GE · GI sound like <span class="ipa">/h/</span> (like the Spanish J)</div>
+              <p><b>/g/:</b> Gas, Gordo, Gustavo, Guerra, aguinaldo, Pingüino</p>
+              <p><b>/h/:</b> Germán, Gimnasio</p>
+              <h4>Practice</h4>
+              <p>Paraguas · Coger · Algeciras · Guisante · Colegio · Colega · Alguna</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.5 Letter H -->
+        <article class="lesson" id="l-h" data-lesson>
+          <div class="lesson-head"><span class="lnum">5</span><h3>La letra H<span class="en">The letter H</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="y3WWrdFjmC0"></div>
+            <div class="note-body">
+              <div class="tip">The <b>H is silent</b> in Spanish — you never pronounce it.</div>
+              <ul class="words">
+                <li><b>Hola</b><span>hello</span></li>
+                <li><b>Huevo</b><span>egg</span></li>
+                <li><b>Humo</b><span>smoke</span></li>
+              </ul>
+              <div class="rule">But <b>CH</b> together sounds like English "ch": cha · che · chi · cho · chu — e.g. <b>Cuchara</b> (spoon)</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.6 Letter J -->
+        <article class="lesson" id="l-j" data-lesson>
+          <div class="lesson-head"><span class="lnum">6</span><h3>La letra J<span class="en">The letter J</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="qWOUNwS7-_I"></div>
+            <div class="note-body">
+              <div class="rule">JA · JE · JI · JO · JU all sound like <span class="ipa">/h/</span> (a strong H from the throat)</div>
+              <div class="tip"><b>JE · JI = GE · GI</b> — they sound the same.</div>
+              <p><b>Examples:</b> Javier, Jesús, José, Junio, Jabón, Juego, Julia</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.7 Letter K -->
+        <article class="lesson" id="l-k" data-lesson>
+          <div class="lesson-head"><span class="lnum">7</span><h3>La letra K<span class="en">The letter K</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="vksm-vNstZg"></div>
+            <div class="note-body">
+              <div class="tip">We <b>barely use the K</b> in Spanish. For the /k/ sound we normally use <b>CA CO CU</b> and <b>QUE QUI</b>.</div>
+              <p>It only appears in a few borrowed words: <b>Kevin, Kilo, Kilómetro, Kiosko</b>.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.8 Letter LL -->
+        <article class="lesson" id="l-ll" data-lesson>
+          <div class="lesson-head"><span class="lnum">8</span><h3>La letra LL<span class="en">The letter LL (elle)</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="tgWftRrM0Ug"></div>
+            <div class="note-body">
+              <div class="rule">LLA · LLE · LLI · LLO · LLU sound like <span class="ipa">/y/</span> (some regions say a soft /j/)</div>
+              <p><b>Examples:</b> Gui<b>ll</b>ermo, Llano, Mantequilla, Tornillo, Lluvia, Llover, Conejillo</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.9 Letter Ñ -->
+        <article class="lesson" id="l-n" data-lesson>
+          <div class="lesson-head"><span class="lnum">9</span><h3>La letra Ñ<span class="en">The letter Ñ (eñe)</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="7XY2-tuM_v4"></div>
+            <div class="note-body">
+              <div class="rule">ÑA · ÑE · ÑI · ÑO · ÑU — like the "ny" in <b>canyon</b></div>
+              <ul class="words">
+                <li><b>España</b><span>Spain</span></li>
+                <li><b>Año</b><span>year</span></li>
+                <li><b>Cañón</b><span>cannon</span></li>
+                <li><b>Marañones</b><span>cashews</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.10 Letter Q -->
+        <article class="lesson" id="l-q" data-lesson>
+          <div class="lesson-head"><span class="lnum">10</span><h3>La letra Q<span class="en">The letter Q (cu)</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="QG1SeNDlwhc"></div>
+            <div class="note-body">
+              <div class="rule">CA · QUE · QUI · CO · CU all sound like <span class="ipa">/k/</span></div>
+              <div class="tip">The Q is always followed by a silent U: <b>que, qui</b>.</div>
+              <ul class="words">
+                <li><b>Queso</b><span>cheese</span></li>
+                <li><b>Quince</b><span>15</span></li>
+                <li><b>Coqueto</b><span>flirty</span></li>
+                <li><b>Maquillaje</b><span>make-up</span></li>
+                <li><b>Mantequilla</b><span>butter</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.11 Letter R -->
+        <article class="lesson" id="l-r" data-lesson>
+          <div class="lesson-head"><span class="lnum">11</span><h3>La letra R y RR<span class="en">The letters R &amp; RR</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="iRkY8YFTbdg"></div>
+            <div class="note-body">
+              <div class="rule">Single <b>R</b> = soft · Double <b>RR</b> (and R at the start of a word) = strong, rolled</div>
+              <p><b>Strong:</b> Ramón, Marrón, Rata &nbsp;·&nbsp; <b>Soft:</b> Marido, Corazón</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.12 Letter V -->
+        <article class="lesson" id="l-v" data-lesson>
+          <div class="lesson-head"><span class="lnum">12</span><h3>La letra V<span class="en">The letter V (uve)</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="OlfaQucFvAc"></div>
+            <div class="note-body">
+              <div class="rule">In Spanish <b>V = B</b> — they sound the same</div>
+              <p><b>Examples:</b> Valencia, Vale (ok)</p>
+              <div class="tip">Watch out for combinations: <b>BR, BL, MB, NV</b> — e.g. Invento, invitar, envidia.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.13 Letter W -->
+        <article class="lesson" id="l-w" data-lesson>
+          <div class="lesson-head"><span class="lnum">13</span><h3>La letra W<span class="en">The letter W (uve doble)</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="4IMvhcynmR0"></div>
+            <div class="note-body">
+              <div class="tip">Like the K, we <b>almost never use the W</b>. It only appears in foreign words.</div>
+              <p>Wow! · Way → ¡Guay! (cool)</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.14 Letter Y -->
+        <article class="lesson" id="l-y" data-lesson>
+          <div class="lesson-head"><span class="lnum">14</span><h3>La letra Y<span class="en">The letter Y (i griega)</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="0FdnGOQ5Uq4"></div>
+            <div class="note-body">
+              <h4>As a vowel (sounds like "i")</h4>
+              <p>Rey, Ley &nbsp;·&nbsp; and the word <b>y</b> = "and" → <i>Mi padre <b>y</b> mi madre</i></p>
+              <h4>As a consonant (Y = LL)</h4>
+              <p>Playa, Mayo, Tocayo</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.15 Letter Z -->
+        <article class="lesson" id="l-z" data-lesson>
+          <div class="lesson-head"><span class="lnum">15</span><h3>La letra Z<span class="en">The letter Z (ceta)</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="rcJxc1xbMag"></div>
+            <div class="note-body">
+              <div class="rule">ZA · CE · CI · ZO · ZU sound like <span class="ipa">/th/</span> (Spain) or <span class="ipa">/s/</span> (Latin America)</div>
+              <ul class="words">
+                <li><b>Taza</b><span>cup</span></li>
+                <li><b>Corteza</b><span>bark / crust</span></li>
+                <li><b>Cerveza</b><span>beer</span></li>
+                <li><b>Zoquete</b><span>blockhead</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1.16 Recap -->
+        <article class="lesson" id="l-recap1" data-lesson>
+          <div class="lesson-head"><span class="lnum">16</span><h3>Repaso y práctica de escritura<span class="en">Recap &amp; writing practice</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="kykJt18c1xA"></div>
+            <div class="note-body">
+              <p><b>How to practise:</b></p>
+              <p>1 · Identify single words and write them down.<br>2 · Read out loud, repeating after the reader (like an audiobook).</p>
+              <h4>Try these words</h4>
+              <p>Jalapeño · Tornillo · Pared · Piedra · Rápido · Es verdad</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- MODULE 2 -->
+      <!-- ============================================================= -->
+      <section class="module" data-module id="mod-2">
+        <div class="module-head">
+          <span class="badge">2</span>
+          <div>
+            <h2><span class="es">Vocabulario Básico</span></h2>
+            <div class="en">Basic Vocabulary</div>
+          </div>
+        </div>
+        <a class="module-playlist" href="https://youtube.com/playlist?list=PL2vvLPhZg3ypMpu9q_mwGMFMcnqmMAjbF" target="_blank" rel="noopener"><span class="yt-ic">▶</span> Full playlist on YouTube</a>
+
+        <!-- 2.1 Numbers -->
+        <article class="lesson" id="l-numbers" data-lesson>
+          <div class="lesson-head"><span class="lnum">1</span><h3>Los Números<span class="en">The Numbers</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="bMDXLhfR84w"></div>
+            <div class="video" data-yt="gQZ2f5nbGmA"></div>
+            <div class="note-body">
+              <h4>0 – 15 (learn by heart)</h4>
+              <ul class="words">
+                <li><b>1</b><span>uno</span></li><li><b>2</b><span>dos</span></li><li><b>3</b><span>tres</span></li>
+                <li><b>4</b><span>cuatro</span></li><li><b>5</b><span>cinco</span></li><li><b>6</b><span>seis</span></li>
+                <li><b>7</b><span>siete</span></li><li><b>8</b><span>ocho</span></li><li><b>9</b><span>nueve</span></li>
+                <li><b>10</b><span>diez</span></li><li><b>11</b><span>once</span></li><li><b>12</b><span>doce</span></li>
+                <li><b>13</b><span>trece</span></li><li><b>14</b><span>catorce</span></li><li><b>15</b><span>quince</span></li>
+              </ul>
+              <h4>16 – 29 &nbsp;(10 + number, written as one word)</h4>
+              <ul class="words">
+                <li><b>16</b><span>dieciséis</span></li><li><b>17</b><span>diecisiete</span></li>
+                <li><b>18</b><span>dieciocho</span></li><li><b>19</b><span>diecinueve</span></li>
+                <li><b>20</b><span>veinte</span></li><li><b>21</b><span>veintiuno</span></li>
+                <li><b>27</b><span>veintisiete</span></li>
+              </ul>
+              <h4>Tens (-nta / -enta) → three words: tens + <i>y</i> + units</h4>
+              <ul class="words">
+                <li><b>30</b><span>treinta</span></li><li><b>35</b><span>treinta y cinco</span></li>
+                <li><b>40</b><span>cuarenta</span></li><li><b>50</b><span>cincuenta</span></li>
+                <li><b>60</b><span>sesenta</span></li><li><b>70</b><span>setenta</span></li>
+                <li><b>80</b><span>ochenta</span></li><li><b>90</b><span>noventa</span></li>
+                <li><b>99</b><span>noventa y nueve</span></li>
+              </ul>
+              <h4>Hundreds</h4>
+              <ul class="words">
+                <li><b>100</b><span>cien</span></li><li><b>101</b><span>ciento uno</span></li>
+                <li><b>200</b><span>doscientos</span></li><li><b>300</b><span>trescientos</span></li>
+                <li><b>400</b><span>cuatrocientos</span></li><li><b>500</b><span>quinientos ⚠</span></li>
+                <li><b>600</b><span>seiscientos</span></li><li><b>700</b><span>setecientos ⚠</span></li>
+                <li><b>800</b><span>ochocientos</span></li><li><b>900</b><span>novecientos ⚠</span></li>
+              </ul>
+              <div class="tip"><b>Careful with ⚠ :</b> 500 = quinientos, 700 = setecientos, 900 = novecientos (they are irregular).</div>
+              <h4>Thousands &amp; millions</h4>
+              <ul class="words">
+                <li><b>1.000</b><span>mil</span></li><li><b>3.000</b><span>tres mil</span></li>
+                <li><b>45.000</b><span>cuarenta y cinco mil</span></li>
+                <li><b>1.000.000</b><span>un millón</span></li>
+                <li><b>2.000.000</b><span>dos millones</span></li>
+              </ul>
+              <div class="ex"><p class="es">345.876</p><p class="en">trescientos cuarenta y cinco mil, ochocientos setenta y seis</p></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2.2 Date -->
+        <article class="lesson" id="l-date" data-lesson>
+          <div class="lesson-head"><span class="lnum">2</span><h3>La Fecha<span class="en">The Date</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="1iVazxijLWg"></div>
+            <div class="note-body">
+              <div class="qa"><span class="q">¿Qué día es hoy?</span> — What day is today?</div>
+              <div class="rule">Hoy es… <b>día de la semana + número + de + mes + de + año</b></div>
+              <div class="ex"><p class="es">Hoy es miércoles, quince de mayo, de dos mil veinticinco</p><p class="en">Today is Wednesday, the 15th of May, 2025</p></div>
+              <div class="ex"><p class="es">27 / 04 / 2024 → Es lunes, veintisiete de abril de dos mil veinticuatro</p></div>
+              <h4>Días de la semana · Days of the week</h4>
+              <ul class="words">
+                <li><b>Lunes</b><span>Monday</span></li><li><b>Martes</b><span>Tuesday</span></li>
+                <li><b>Miércoles</b><span>Wednesday</span></li><li><b>Jueves</b><span>Thursday</span></li>
+                <li><b>Viernes</b><span>Friday</span></li><li><b>Sábado</b><span>Saturday</span></li>
+                <li><b>Domingo</b><span>Sunday</span></li>
+              </ul>
+              <h4>Meses del año · Months</h4>
+              <ul class="words">
+                <li><b>Enero</b><span>January</span></li><li><b>Febrero</b><span>February</span></li>
+                <li><b>Marzo</b><span>March</span></li><li><b>Abril</b><span>April</span></li>
+                <li><b>Mayo</b><span>May</span></li><li><b>Junio</b><span>June</span></li>
+                <li><b>Julio</b><span>July</span></li><li><b>Agosto</b><span>August</span></li>
+                <li><b>Septiembre</b><span>September</span></li><li><b>Octubre</b><span>October</span></li>
+                <li><b>Noviembre</b><span>November</span></li><li><b>Diciembre</b><span>December</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2.3 Time -->
+        <article class="lesson" id="l-time" data-lesson>
+          <div class="lesson-head"><span class="lnum">3</span><h3>La Hora<span class="en">The Time</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="IOd9sUp3WWw"></div>
+            <div class="note-body">
+              <div class="qa"><span class="q">¿Qué hora es?</span> — What time is it?</div>
+              <div class="rule">Son las + <b>número (horas)</b> + y + <b>minutos</b></div>
+              <div class="qa"><span class="q">¿A qué hora…?</span> — At what time? &nbsp;→&nbsp; <span class="a">A las…</span></div>
+              <ul class="words">
+                <li><b>10:00</b><span>Son las diez</span></li>
+                <li><b>12:10</b><span>Son las doce y diez</span></li>
+                <li><b>12:15</b><span>…y cuarto</span></li>
+                <li><b>12:30</b><span>…y media</span></li>
+                <li><b>16:20</b><span>las cuatro y veinte de la tarde</span></li>
+                <li><b>04:20</b><span>las cuatro y veinte de la mañana</span></li>
+              </ul>
+              <div class="tip"><b>A.M.</b> → de la mañana &nbsp;·&nbsp; <b>P.M.</b> → de la tarde / de la noche</div>
+              <h4>Practice</h4>
+              <p>14:20 → &nbsp; 11:15 → &nbsp; 02:46 → &nbsp; 23:02 →</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2.4 Weather -->
+        <article class="lesson" id="l-weather" data-lesson>
+          <div class="lesson-head"><span class="lnum">4</span><h3>El Tiempo<span class="en">The Weather</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="IOd9sUp3WWw"></div>
+            <div class="note-body">
+              <div class="qa"><span class="q">¿Qué tiempo hace?</span> — What's the weather like? (lit. "what weather does it make?")</div>
+              <h4>Hace… (+ mucho / un poco de)</h4>
+              <ul class="words">
+                <li><b>Calor</b><span>hot</span></li><li><b>Frío</b><span>cold</span></li>
+                <li><b>Sol</b><span>sun</span></li><li><b>Viento</b><span>wind</span></li>
+              </ul>
+              <h4>Está…</h4>
+              <ul class="words">
+                <li><b>Nublado</b><span>cloudy</span></li><li><b>Despejado</b><span>clear</span></li>
+                <li><b>Lloviendo</b><span>raining</span></li>
+              </ul>
+              <div class="ex"><p class="es">En Madrid <b>hace calor</b> en agosto, pero <b>hace mucho frío</b> en enero.</p><p class="en">In Madrid it's hot in August, but very cold in January.</p></div>
+              <div class="ex"><p class="es">Hoy en México <b>hace viento</b>.</p><p class="en">Today in Mexico it's windy.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2.5 Prepositions -->
+        <article class="lesson" id="l-prep" data-lesson>
+          <div class="lesson-head"><span class="lnum">5</span><h3>Las Preposiciones<span class="en">Prepositions</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="WjRwdcvJ26I"></div>
+            <div class="note-body">
+              <div class="qa"><span class="q">¿Dónde está…?</span> — Where is…? &nbsp;→&nbsp; <span class="a">Está… (it is…)</span></div>
+              <ul class="words">
+                <li><b>En</b><span>in / on / at</span></li>
+                <li><b>Debajo de</b><span>under</span></li>
+                <li><b>Detrás de</b><span>behind</span></li>
+                <li><b>Enfrente de</b><span>in front of</span></li>
+                <li><b>Al fondo de</b><span>at the back of</span></li>
+              </ul>
+              <div class="ex"><p class="es">Mi teléfono está <b>en</b> la mesa.</p><p class="en">My phone is on the table.</p></div>
+              <div class="ex"><p class="es">Mi casa está <b>detrás de</b> un parque.</p><p class="en">My house is behind a park.</p></div>
+              <div class="ex"><p class="es">La silla está <b>debajo de</b> la mesa.</p><p class="en">The chair is under the table.</p></div>
+              <div class="tip">Useful phrase: <b>¿Cómo se dice ___ en español?</b> → How do you say ___ in Spanish? &nbsp;·&nbsp; Answer: <b>Se dice ___</b></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2.6 Recap 2 -->
+        <article class="lesson" id="l-recap2" data-lesson>
+          <div class="lesson-head"><span class="lnum">6</span><h3>Repaso Módulo 2<span class="en">Module 2 Recap</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="HFCQzj-DgKg"></div>
+            <div class="note-body">
+              <p>Put it all together — date, time and weather.</p>
+              <div class="qa"><span class="q">¿Qué día es hoy?</span> <span class="a">Hoy es viernes, diecisiete de mayo de dos mil veinticuatro.</span></div>
+              <div class="qa"><span class="q">¿Qué hora es en Berlín?</span> <span class="a">En Berlín son las doce y cincuenta y siete. (12:57)</span></div>
+              <div class="qa"><span class="q">¿Qué tiempo hace en Michigan?</span> <span class="a">Hace mucho calor y un poco de viento.</span></div>
+              <div class="qa"><span class="q">¿Dónde está Brasil?</span> <span class="a">Brasil está debajo de Colombia.</span></div>
+              <div class="tip"><b>Daily practice (10–15 min):</b> 1) la fecha · 2) la hora · 3) el tiempo.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- MODULE 3 -->
+      <!-- ============================================================= -->
+      <section class="module" data-module id="mod-3">
+        <div class="module-head">
+          <span class="badge">3</span>
+          <div>
+            <h2><span class="es">Gramática y Frases</span></h2>
+            <div class="en">Grammar &amp; Sentence Formation</div>
+          </div>
+        </div>
+
+        <!-- 3.0 Intro -->
+        <article class="lesson" id="l-mod3-intro" data-lesson>
+          <div class="lesson-head"><span class="lnum">1</span><h3>Introducción al Módulo 3<span class="en">Module 3 Intro</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="rz4nfHs1BJ4"></div>
+            <div class="note-body">
+              <h4>Verb types</h4>
+              <p>Regular · Irregular · Reflexive</p>
+              <h4>The 6 tenses we'll build</h4>
+              <p>1 · Present simple — <i>I write a book</i><br>
+              2 · Present continuous — <i>I'm speaking now</i><br>
+              3 · Future — <i>I will / am going to call you</i><br>
+              4 · Past simple — <i>I talked with my brother</i><br>
+              5 · Present perfect — <i>I've been to Berlin</i><br>
+              6 · Past imperfect — <i>I used to drink milk</i></p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3.1 Regular verbs -->
+        <article class="lesson" id="l-regular" data-lesson>
+          <div class="lesson-head"><span class="lnum">2</span><h3>Verbos Regulares y Presente Simple<span class="en">Regular Verbs &amp; Present Simple</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="D43AlyPfpSU"></div>
+            <div class="note-body">
+              <p>Spanish verbs end in <b>-AR</b>, <b>-ER</b> or <b>-IR</b>. Remove the ending and add these:</p>
+              <table class="conj"><caption>-AR verbs (e.g. hablar)</caption><tbody>
+                <tr><td>yo</td><td>habl-<b>o</b></td></tr>
+                <tr><td>tú</td><td>habl-<b>as</b></td></tr>
+                <tr><td>él / ella</td><td>habl-<b>a</b></td></tr>
+                <tr><td>nosotros</td><td>habl-<b>amos</b></td></tr>
+                <tr><td>vosotros</td><td>habl-<b>áis</b></td></tr>
+                <tr><td>ellos</td><td>habl-<b>an</b></td></tr>
+              </tbody></table>
+              <table class="conj"><caption>-ER &amp; -IR verbs (e.g. comer / vivir)</caption><tbody>
+                <tr><td>yo</td><td>com-<b>o</b></td></tr>
+                <tr><td>tú</td><td>com-<b>es</b></td></tr>
+                <tr><td>él / ella</td><td>com-<b>e</b></td></tr>
+                <tr><td>nosotros</td><td>com-<b>emos</b> / viv-<b>imos</b></td></tr>
+                <tr><td>vosotros</td><td>com-<b>éis</b> / viv-<b>ís</b></td></tr>
+                <tr><td>ellos</td><td>com-<b>en</b></td></tr>
+              </tbody></table>
+              <h4>Examples</h4>
+              <div class="ex"><p class="es">Hablas inglés.</p><p class="en">You speak English.</p></div>
+              <div class="ex"><p class="es">¿Comes paella? — No, no como paella.</p><p class="en">Do you eat paella? — No, I don't eat paella.</p></div>
+              <div class="ex"><p class="es">¿Dónde vives? — Vivo en Madrid.</p><p class="en">Where do you live? — I live in Madrid.</p></div>
+              <div class="ex"><p class="es">Cocino pizza los lunes.</p><p class="en">I cook pizza on Mondays.</p></div>
+              <div class="tip"><b>To make it negative:</b> just put <b>no</b> before the verb → <i>No hablas inglés.</i></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3.2 Irregular verbs -->
+        <article class="lesson" id="l-irregular" data-lesson>
+          <div class="lesson-head"><span class="lnum">3</span><h3>Verbos Irregulares<span class="en">Irregular Verbs</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="97b4Q7JCPRk"></div>
+            <div class="note-body">
+              <p>These verbs change their root. They're the most used verbs in Spanish, so learn them well.</p>
+              <table class="conj"><caption>SER — to be (identity, descriptions)</caption><tbody>
+                <tr><td>yo</td><td><b>soy</b></td></tr><tr><td>tú</td><td><b>eres</b></td></tr>
+                <tr><td>él / ella</td><td><b>es</b></td></tr><tr><td>nosotros</td><td><b>somos</b></td></tr>
+                <tr><td>vosotros</td><td><b>sois</b></td></tr><tr><td>ellos</td><td><b>son</b></td></tr>
+              </tbody></table>
+              <table class="conj"><caption>ESTAR — to be (place, mood, feelings)</caption><tbody>
+                <tr><td>yo</td><td><b>estoy</b></td></tr><tr><td>tú</td><td><b>estás</b></td></tr>
+                <tr><td>él / ella</td><td><b>está</b></td></tr><tr><td>nosotros</td><td><b>estamos</b></td></tr>
+                <tr><td>vosotros</td><td><b>estáis</b></td></tr><tr><td>ellos</td><td><b>están</b></td></tr>
+              </tbody></table>
+              <div class="ex"><p class="es">Estoy en el parque.</p><p class="en">I'm at the park.</p></div>
+              <table class="conj"><caption>HACER — to do / make</caption><tbody>
+                <tr><td>yo</td><td><b>hago</b></td></tr><tr><td>tú</td><td>haces</td></tr>
+                <tr><td>él / ella</td><td>hace</td></tr><tr><td>nosotros</td><td>hacemos</td></tr>
+                <tr><td>vosotros</td><td>hacéis</td></tr><tr><td>ellos</td><td>hacen</td></tr>
+              </tbody></table>
+              <table class="conj"><caption>IR — to go</caption><tbody>
+                <tr><td>yo</td><td><b>voy</b></td></tr><tr><td>tú</td><td>vas</td></tr>
+                <tr><td>él / ella</td><td>va</td></tr><tr><td>nosotros</td><td>vamos</td></tr>
+                <tr><td>vosotros</td><td>vais</td></tr><tr><td>ellos</td><td>van</td></tr>
+              </tbody></table>
+              <table class="conj"><caption>TENER — to have / own</caption><tbody>
+                <tr><td>yo</td><td><b>tengo</b></td></tr><tr><td>tú</td><td>tienes</td></tr>
+                <tr><td>él / ella</td><td>tiene</td></tr><tr><td>nosotros</td><td>tenemos</td></tr>
+                <tr><td>vosotros</td><td>tenéis</td></tr><tr><td>ellos</td><td>tienen</td></tr>
+              </tbody></table>
+              <table class="conj"><caption>PODER — can / to be able</caption><tbody>
+                <tr><td>yo</td><td><b>puedo</b></td></tr><tr><td>tú</td><td>puedes</td></tr>
+                <tr><td>él / ella</td><td>puede</td></tr><tr><td>nosotros</td><td>podemos</td></tr>
+                <tr><td>vosotros</td><td>podéis</td></tr><tr><td>ellos</td><td>pueden</td></tr>
+              </tbody></table>
+              <table class="conj"><caption>VENIR — to come</caption><tbody>
+                <tr><td>yo</td><td><b>vengo</b></td></tr><tr><td>tú</td><td>vienes</td></tr>
+                <tr><td>él / ella</td><td>viene</td></tr><tr><td>nosotros</td><td>venimos</td></tr>
+                <tr><td>vosotros</td><td>venís</td></tr><tr><td>ellos</td><td>vienen</td></tr>
+              </tbody></table>
+              <table class="conj"><caption>QUERER — to want</caption><tbody>
+                <tr><td>yo</td><td><b>quiero</b></td></tr><tr><td>tú</td><td>quieres</td></tr>
+                <tr><td>él / ella</td><td>quiere</td></tr><tr><td>nosotros</td><td>queremos</td></tr>
+                <tr><td>vosotros</td><td>queréis</td></tr><tr><td>ellos</td><td>quieren</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3.3 Reflexive verbs -->
+        <article class="lesson" id="l-reflexive" data-lesson>
+          <div class="lesson-head"><span class="lnum">4</span><h3>Verbos Reflexivos<span class="en">Reflexive Verbs</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="3DLk-eDOpgI"></div>
+            <div class="note-body">
+              <p>Some verbs change meaning when you add a reflexive pronoun (<b>-se</b>):</p>
+              <ul class="words">
+                <li><b>Quedar</b><span>to meet</span></li><li><b>Quedarse</b><span>to stay</span></li>
+                <li><b>Ir</b><span>to go</span></li><li><b>Irse</b><span>to leave</span></li>
+                <li><b>Querer</b><span>to want</span></li><li><b>Quererse</b><span>to love</span></li>
+                <li><b>Llamar</b><span>to call</span></li><li><b>Llamarse</b><span>to be called</span></li>
+                <li><b>Despertarse</b><span>to wake up</span></li><li><b>Ducharse</b><span>to shower</span></li>
+              </ul>
+              <h4>Reflexive / object pronouns</h4>
+              <ul class="words">
+                <li><b>Me</b><span>me</span></li><li><b>Te</b><span>you</span></li>
+                <li><b>Le</b><span>him / her</span></li><li><b>Lo / La</b><span>it</span></li>
+                <li><b>Nos</b><span>us</span></li><li><b>Os</b><span>you all</span></li>
+                <li><b>Les</b><span>them</span></li><li><b>Se</b><span>himself / oneself</span></li>
+              </ul>
+              <div class="tip">The pronoun goes <b>before the verb 90%</b> of the time. With infinitives and imperatives it goes <b>after</b> (e.g. <i>llamar<b>me</b></i>).</div>
+              <h4>Examples</h4>
+              <div class="ex"><p class="es">Guillermo <b>me</b> llama todos los días.</p><p class="en">Guillermo calls me every day.</p></div>
+              <div class="ex"><p class="es"><b>Os</b> compramos un libro.</p><p class="en">We buy you guys a book.</p></div>
+              <div class="ex"><p class="es"><b>Nos</b> quedamos en casa.</p><p class="en">We stay at home.</p></div>
+              <div class="ex"><p class="es"><b>Me</b> voy a trabajar.</p><p class="en">I'm leaving to work.</p></div>
+              <div class="ex"><p class="es">Quedo con mis amigos en casa.</p><p class="en">I meet with my friends at home.</p></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- MODULE 4 -->
+      <!-- ============================================================= -->
+      <section class="module" data-module id="mod-4">
+        <div class="module-head">
+          <span class="badge">4</span>
+          <div>
+            <h2><span class="es">Tiempos Verbales</span></h2>
+            <div class="en">Verb Tenses</div>
+          </div>
+        </div>
+        <a class="module-playlist" href="https://youtube.com/playlist?list=PL2vvLPhZg3yrrbreRGHDH2iep7SFhOxvx" target="_blank" rel="noopener"><span class="yt-ic">▶</span> Full playlist on YouTube</a>
+
+        <!-- 4.1 Future -->
+        <article class="lesson" id="l-future" data-lesson>
+          <div class="lesson-head"><span class="lnum">1</span><h3>El Futuro<span class="en">The Future</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="HdzfZvkFQR0"></div>
+            <div class="note-body">
+              <h4>1) "Going to" → Ir + a + infinitive</h4>
+              <p><b>Ir:</b> voy, vas, va, vamos, vais, van</p>
+              <div class="ex"><p class="es">Voy a comer con mis padres mañana.</p><p class="en">I'm going to have lunch with my parents tomorrow.</p></div>
+              <div class="ex"><p class="es">¿Vas a tener un perro pronto?</p><p class="en">Are you going to have a dog soon?</p></div>
+              <div class="ex"><p class="es">Va a quedarse en Madrid en agosto.</p><p class="en">She's going to stay in Madrid in August.</p></div>
+              <h4>2) "Will" → keep the infinitive + endings</h4>
+              <p class="muted"><i>Less certain than "going to".</i></p>
+              <table class="conj"><caption>-AR, -ER &amp; -IR (e.g. hablar)</caption><tbody>
+                <tr><td>yo</td><td>hablar-<b>é</b></td></tr><tr><td>tú</td><td>hablar-<b>ás</b></td></tr>
+                <tr><td>él / ella</td><td>hablar-<b>á</b></td></tr><tr><td>nosotros</td><td>hablar-<b>emos</b></td></tr>
+                <tr><td>vosotros</td><td>hablar-<b>éis</b></td></tr><tr><td>ellos</td><td>hablar-<b>án</b></td></tr>
+              </tbody></table>
+              <div class="ex"><p class="es">Mañana hablaré con mi hermano.</p><p class="en">Tomorrow I'll speak with my brother.</p></div>
+              <h4>Irregular roots (same endings)</h4>
+              <ul class="words">
+                <li><b>Ser</b><span>seré</span></li><li><b>Estar</b><span>estaré</span></li>
+                <li><b>Ir</b><span>iré</span></li><li><b>Hacer</b><span>haré</span></li>
+                <li><b>Tener</b><span>tendré</span></li><li><b>Poder</b><span>podré</span></li>
+                <li><b>Querer</b><span>querré</span></li><li><b>Volver</b><span>volveré</span></li>
+              </ul>
+              <div class="ex"><p class="es">¿Qué harás mañana?</p><p class="en">What will you do tomorrow?</p></div>
+              <div class="ex"><p class="es">Irán a Madrid en junio.</p><p class="en">They will go to Madrid in June.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4.2 Present continuous -->
+        <article class="lesson" id="l-continuous" data-lesson>
+          <div class="lesson-head"><span class="lnum">2</span><h3>Presente Continuo<span class="en">Present Continuous</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="v1066nVuHyM"></div>
+            <div class="note-body">
+              <p>For actions happening <b>right now</b>. English "to be + -ing".</p>
+              <div class="rule">ESTAR + verb: <b>-ando</b> (-AR) &nbsp;/&nbsp; <b>-iendo</b> (-ER &amp; -IR)</div>
+              <div class="ex"><p class="es">Estoy hablando.</p><p class="en">I'm speaking.</p></div>
+              <div class="ex"><p class="es">Estás comiendo, ¿no?</p><p class="en">You're eating, right?</p></div>
+              <h4>Irregular gerunds</h4>
+              <ul class="words">
+                <li><b>Ir</b><span>yendo</span></li><li><b>Venir</b><span>viniendo</span></li>
+                <li><b>Hacer</b><span>haciendo</span></li><li><b>Tener</b><span>teniendo</span></li>
+                <li><b>Volver</b><span>volviendo</span></li>
+              </ul>
+              <div class="ex"><p class="es">¿Te estás yendo ya?</p><p class="en">Are you leaving already?</p></div>
+              <div class="ex"><p class="es">¿Por qué te están escribiendo?</p><p class="en">Why are they writing to you?</p></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4.3 Present perfect -->
+        <article class="lesson" id="l-perfect" data-lesson>
+          <div class="lesson-head"><span class="lnum">3</span><h3>Presente Perfecto<span class="en">Present Perfect</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="ImjlbAWZQQs"></div>
+            <div class="note-body">
+              <p>For things that happened recently / today. English "have + participle".</p>
+              <div class="rule">HABER + verb: <b>-ado</b> (-AR) &nbsp;/&nbsp; <b>-ido</b> (-ER &amp; -IR)</div>
+              <p><b>Haber:</b> he, has, ha, hemos, habéis, han</p>
+              <div class="ex"><p class="es">He hablado con mi madre esta mañana.</p><p class="en">I've spoken with my mum this morning.</p></div>
+              <div class="ex"><p class="es">¿Has vivido en Chile antes?</p><p class="en">Have you lived in Chile before?</p></div>
+              <h4>Irregular participles</h4>
+              <ul class="words">
+                <li><b>Estar</b><span>estado</span></li><li><b>Ser</b><span>sido</span></li>
+                <li><b>Ir</b><span>ido</span></li><li><b>Volver</b><span>vuelto</span></li>
+                <li><b>Decir</b><span>dicho</span></li><li><b>Hacer</b><span>hecho</span></li>
+                <li><b>Ver</b><span>visto</span></li><li><b>Poner</b><span>puesto</span></li>
+                <li><b>Escribir</b><span>escrito</span></li>
+              </ul>
+              <div class="ex"><p class="es">¿Dónde has puesto las llaves?</p><p class="en">Where did you put the keys?</p></div>
+              <div class="ex"><p class="es">¿Qué has dicho?</p><p class="en">What did you say?</p></div>
+              <div class="ex"><p class="es">Me he quedado en la cama toda la mañana.</p><p class="en">I stayed in bed all morning.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4.4 Past imperfect -->
+        <article class="lesson" id="l-imperfect" data-lesson>
+          <div class="lesson-head"><span class="lnum">4</span><h3>El Pasado Imperfecto<span class="en">Past Imperfect</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="bG7Psepxe9o"></div>
+            <div class="note-body">
+              <p>For the past continuous and "used to…". Almost always regular (90%).</p>
+              <table class="conj"><caption>-AR verbs</caption><tbody>
+                <tr><td>yo</td><td>-<b>aba</b></td></tr><tr><td>tú</td><td>-<b>abas</b></td></tr>
+                <tr><td>él / ella</td><td>-<b>aba</b></td></tr><tr><td>nosotros</td><td>-<b>ábamos</b></td></tr>
+                <tr><td>vosotros</td><td>-<b>abais</b></td></tr><tr><td>ellos</td><td>-<b>aban</b></td></tr>
+              </tbody></table>
+              <table class="conj"><caption>-ER &amp; -IR verbs</caption><tbody>
+                <tr><td>yo</td><td>-<b>ía</b></td></tr><tr><td>tú</td><td>-<b>ías</b></td></tr>
+                <tr><td>él / ella</td><td>-<b>ía</b></td></tr><tr><td>nosotros</td><td>-<b>íamos</b></td></tr>
+                <tr><td>vosotros</td><td>-<b>íais</b></td></tr><tr><td>ellos</td><td>-<b>ían</b></td></tr>
+              </tbody></table>
+              <h4>Irregulars</h4>
+              <ul class="words">
+                <li><b>Ser</b><span>era, eras, era…</span></li>
+                <li><b>Ir</b><span>iba, ibas, iba…</span></li>
+                <li><b>Tener</b><span>tenía</span></li><li><b>Hacer</b><span>hacía</span></li>
+              </ul>
+              <div class="ex"><p class="es">Mi padre decía que tenía que comer verdura.</p><p class="en">My dad used to say that I had to eat vegetables.</p></div>
+              <div class="ex"><p class="es">¿Le escribías antes?</p><p class="en">Would you write to her back in the day?</p></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- MODULE 5 -->
+      <!-- ============================================================= -->
+      <section class="module" data-module id="mod-5">
+        <div class="module-head">
+          <span class="badge">5</span>
+          <div>
+            <h2><span class="es">Condicionales y Subjuntivo</span></h2>
+            <div class="en">Conditionals &amp; Subjunctive</div>
+          </div>
+        </div>
+
+        <!-- 5.1 Conditionals -->
+        <article class="lesson" id="l-conditionals" data-lesson>
+          <div class="lesson-head"><span class="lnum">1</span><h3>Los Condicionales<span class="en">Conditionals</span></h3></div>
+          <div class="lesson-body">
+            <div class="video" data-yt="1NblUZW6bKo"></div>
+            <div class="note-body">
+              <h4>The 4 conditional types</h4>
+              <div class="ex"><p class="es"><b>0</b> · Present + present: Si vivo en Madrid, tengo a mi madre cerca.</p></div>
+              <div class="ex"><p class="es"><b>1</b> · Present + future: Si hago deporte, estaré más fuerte.</p></div>
+              <div class="ex"><p class="es"><b>2</b> · Si hiciera eso, esto pasaría.</p><p class="en">If you did that, this would happen.</p></div>
+              <div class="ex"><p class="es"><b>3</b> · Si me hubieras llamado, habríamos hablado.</p><p class="en">If you had called me, we would have spoken.</p></div>
+              <h4>Conditional "would" → infinitive + -ía</h4>
+              <table class="conj"><tbody>
+                <tr><td>yo</td><td>-<b>ía</b></td></tr><tr><td>tú</td><td>-<b>ías</b></td></tr>
+                <tr><td>él / ella</td><td>-<b>ía</b></td></tr><tr><td>nosotros</td><td>-<b>íamos</b></td></tr>
+                <tr><td>vosotros</td><td>-<b>íais</b></td></tr><tr><td>ellos</td><td>-<b>ían</b></td></tr>
+              </tbody></table>
+              <ul class="words">
+                <li><b>Hacer</b><span>haría</span></li><li><b>Tener</b><span>tendría</span></li>
+                <li><b>Venir</b><span>vendría</span></li><li><b>Querer</b><span>querría</span></li>
+                <li><b>Haber</b><span>habría</span></li>
+              </ul>
+              <h4>Imperfect subjunctive (root of past simple + endings)</h4>
+              <table class="conj"><caption>-ER &amp; -IR → -iera</caption><tbody>
+                <tr><td>yo</td><td>-<b>iera</b></td></tr><tr><td>tú</td><td>-<b>ieras</b></td></tr>
+                <tr><td>él / ella</td><td>-<b>iera</b></td></tr><tr><td>nosotros</td><td>-<b>iéramos</b></td></tr>
+              </tbody></table>
+              <table class="conj"><caption>-AR → -ara</caption><tbody>
+                <tr><td>yo</td><td>-<b>ara</b></td></tr><tr><td>tú</td><td>-<b>aras</b></td></tr>
+                <tr><td>él / ella</td><td>-<b>ara</b></td></tr><tr><td>nosotros</td><td>-<b>áramos</b></td></tr>
+              </tbody></table>
+              <ul class="words">
+                <li><b>Estar</b><span>estuviera</span></li><li><b>Tener</b><span>tuviera</span></li>
+                <li><b>Ir</b><span>fuera</span></li><li><b>Venir</b><span>viniera</span></li>
+              </ul>
+              <div class="ex"><p class="es">Si tuviera un perro, caminaría más.</p><p class="en">If I had a dog, I would walk more.</p></div>
+              <div class="ex"><p class="es">¿Si tuvieras un coche, conducirías al trabajo?</p><p class="en">If you had a car, would you drive it to work?</p></div>
+              <div class="ex"><p class="es">Si hubiéramos estudiado medicina, no habríamos sido profesores.</p><p class="en">If we had studied medicine, we wouldn't have been teachers.</p></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- VOCABULARY APPENDIX -->
+      <!-- ============================================================= -->
+      <section class="module" data-module id="mod-vocab">
+        <div class="module-head">
+          <span class="badge">📖</span>
+          <div>
+            <h2><span class="es">Vocabulario</span></h2>
+            <div class="en">Vocabulary reference</div>
+          </div>
+        </div>
+        <article class="lesson" id="l-vocab" data-lesson>
+          <div class="lesson-head"><span class="lnum">★</span><h3>Palabras útiles<span class="en">Useful words from the course</span></h3></div>
+          <div class="lesson-body">
+            <div class="note-body">
+              <h4>Nouns &amp; places</h4>
+              <ul class="words">
+                <li><b>Día</b><span>day</span></li><li><b>Mes</b><span>month</span></li>
+                <li><b>Año</b><span>year</span></li><li><b>Hoy</b><span>today</span></li>
+                <li><b>Casa</b><span>house</span></li><li><b>Mesa</b><span>table</span></li>
+                <li><b>Teléfono</b><span>telephone</span></li><li><b>Farmacia</b><span>pharmacy</span></li>
+                <li><b>Supermercado</b><span>supermarket</span></li><li><b>Cumpleaños</b><span>birthday</span></li>
+                <li><b>Amor</b><span>love</span></li><li><b>Palabra</b><span>word</span></li>
+              </ul>
+              <h4>People &amp; family</h4>
+              <ul class="words">
+                <li><b>Hombre</b><span>man</span></li><li><b>Mujer</b><span>woman</span></li>
+                <li><b>Amigo/a</b><span>friend</span></li><li><b>Primo/a</b><span>cousin</span></li>
+              </ul>
+              <h4>Adjectives (gender &amp; number)</h4>
+              <ul class="words">
+                <li><b>Guapo/a</b><span>handsome / beautiful</span></li>
+                <li><b>Alto/a</b><span>tall</span></li>
+                <li><b>Bien</b><span>good / well</span></li>
+                <li><b>Mal</b><span>bad</span></li>
+              </ul>
+              <h4>Countries</h4>
+              <ul class="words">
+                <li><b>Tailandia</b><span>Thailand</span></li><li><b>Alemania</b><span>Germany</span></li>
+                <li><b>América</b><span>America</span></li>
+              </ul>
+              <h4>Question words</h4>
+              <ul class="words">
+                <li><b>¿Qué…?</b><span>what?</span></li>
+                <li><b>¿Dónde…?</b><span>where?</span></li>
+                <li><b>¿Cómo…?</b><span>how?</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer>
+        <p>🇪🇸 <b>PBC Languages</b> · Spanish Course by Guillermo de Yzaguirre<br>
+        <a href="https://www.instagram.com/vivaespanol.es/" target="_blank" rel="noopener">@vivaespanol.es</a> · People Building Connections</p>
+      </footer>
+
+    </div><!-- /wrap -->
+  </div><!-- /main -->
+</div><!-- /layout -->
+
+<div class="scrim" id="scrim"></div>
+<button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Lazy YouTube facades ---------- */
+  document.querySelectorAll('.video[data-yt]').forEach(function(v){
+    var id = v.getAttribute('data-yt');
+    var img = document.createElement('img');
+    img.loading = 'lazy';
+    img.alt = 'Play video';
+    img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    var play = document.createElement('span');
+    play.className = 'play';
+    v.appendChild(img);
+    v.appendChild(play);
+    v.setAttribute('role','button');
+    v.setAttribute('tabindex','0');
+    function load(){
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      f.title = 'Spanish Course video';
+      v.innerHTML = '';
+      v.appendChild(f);
+    }
+    v.addEventListener('click', load);
+    v.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); }});
+  });
+
+  /* ---------- Build the index (TOC) ---------- */
+  var toc = document.getElementById('toc');
+  var lessons = [];
+  document.querySelectorAll('.module[data-module]').forEach(function(mod){
+    var titleEl = mod.querySelector('.module-head .es');
+    var li = document.createElement('li');
+    var t = document.createElement('div');
+    t.className = 'mod-title';
+    t.textContent = titleEl ? titleEl.textContent : '';
+    li.appendChild(t);
+    toc.appendChild(li);
+    mod.querySelectorAll('.lesson[data-lesson]').forEach(function(les){
+      var h = les.querySelector('.lesson-head h3');
+      var name = h ? h.childNodes[0].textContent.trim() : les.id;
+      var a = document.createElement('a');
+      a.href = '#' + les.id;
+      a.dataset.target = les.id;
+      a.innerHTML = '<span class="dot"></span><span>' + name + '</span>';
+      toc.appendChild(a);
+      lessons.push({id: les.id, el: les, link: a});
+    });
+  });
+  document.getElementById('ptotal').textContent = lessons.length;
+
+  /* ---------- Progress (Done buttons + localStorage) ---------- */
+  var KEY = 'pbc-spanish-progress';
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ done = {}; }
+
+  function refreshProgress(){
+    var n = 0;
+    lessons.forEach(function(l){
+      var on = !!done[l.id];
+      l.el.classList.toggle('is-done', on);
+      l.link.classList.toggle('done', on);
+      if(on) n++;
+    });
+    document.getElementById('pcount').textContent = n;
+    document.getElementById('pbar').style.width = (lessons.length ? (n/lessons.length*100) : 0) + '%';
+  }
+
+  lessons.forEach(function(l){
+    var head = l.el.querySelector('.lesson-head');
+    var btn = document.createElement('button');
+    btn.className = 'done-btn';
+    btn.type = 'button';
+    btn.innerHTML = '<span>Mark as done</span> ✓';
+    btn.addEventListener('click', function(){
+      done[l.id] = !done[l.id];
+      try { localStorage.setItem(KEY, JSON.stringify(done)); } catch(e){}
+      btn.innerHTML = done[l.id] ? '<span>Done</span> ✓' : '<span>Mark as done</span> ✓';
+      refreshProgress();
+    });
+    if(done[l.id]) btn.innerHTML = '<span>Done</span> ✓';
+    head.appendChild(btn);
+  });
+  refreshProgress();
+
+  /* ---------- Mobile menu ---------- */
+  var body = document.body, scrim = document.getElementById('scrim');
+  function closeNav(){ body.classList.remove('nav-open'); }
+  document.getElementById('menuBtn').addEventListener('click', function(){ body.classList.toggle('nav-open'); });
+  scrim.addEventListener('click', closeNav);
+  toc.addEventListener('click', function(e){ if(e.target.closest('a')) closeNav(); });
+
+  /* ---------- Scrollspy ---------- */
+  var linkById = {};
+  lessons.forEach(function(l){ linkById[l.id] = l.link; });
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        Object.values(linkById).forEach(function(a){ a.classList.remove('active'); });
+        var a = linkById[en.target.id];
+        if(a){
+          a.classList.add('active');
+          a.scrollIntoView({block:'nearest'});
+        }
+      }
+    });
+  }, {rootMargin: '-40% 0px -55% 0px'});
+  lessons.forEach(function(l){ spy.observe(l.el); });
+
+  /* ---------- Back to top ---------- */
+  var bt = document.getElementById('backTop');
+  window.addEventListener('scroll', function(){
+    bt.classList.toggle('show', window.scrollY > 700);
+  }, {passive:true});
+  bt.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+})();
+</script>
+</body>
+</html>
